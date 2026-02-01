@@ -109,19 +109,70 @@
     xwayland.enable = true; # Xwayland can be disabled.
   };
 
+  # Enable fcitx5 input method
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-gtk
+      qt6Packages.fcitx5-chinese-addons
+    ];
+  };
+
+  # Enable geoclue2 for location services (used by gammastep)
+  services.geoclue2.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Configure fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Core utilities
     wget
     neovim
     claude-code
     git
     tmux
-    foot
-    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    # Terminal and desktop applications
+    foot                    # Terminal (footclient)
+    emacs                   # Editor
+    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default  # Browser
+
+    # Wayland screenshot tools
+    grim                    # Screenshot utility
+    slurp                   # Region selector
+    satty                   # Screenshot annotation
+
+    # Hyprland ecosystem
+    hyprpolkitagent        # Polkit authentication agent
+    hypridle               # Idle daemon
+    hyprpaper              # Wallpaper daemon
+    waybar                 # Status bar
+
+    # Notifications and system tray
+    swaynotificationcenter # Notification daemon (swaync)
+    networkmanagerapplet   # Network manager applet
+    blueman                # Bluetooth manager
+
+    # Clipboard management
+    wl-clipboard           # Wayland clipboard utilities
+    cliphist               # Clipboard history manager
+
+    # System utilities
+    udiskie                # USB automount with tray
+    gammastep              # Blue light filter
+    brightnessctl          # Brightness control
+    playerctl              # Media player control
+    pavucontrol            # Audio volume control
+    nwg-look               # GTK theme switcher
+    xorg.xhost             # X host access control
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
