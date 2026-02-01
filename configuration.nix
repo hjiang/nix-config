@@ -82,11 +82,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
+  users.groups.hjiang = {};
+
   users.users.hjiang = {
     isNormalUser = true;
     description = "Hong Jiang";
-    extraGroups = [ "networkmanager" "wheel" ];
+    group = "hjiang";
+    extraGroups = [ "networkmanager" "wheel" "users" ];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
