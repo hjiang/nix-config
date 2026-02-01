@@ -142,6 +142,8 @@
     stow
     fzf
     gnumake
+    socat
+    keychain
 
     # Terminal and desktop applications
     foot                    # Terminal (footclient)
