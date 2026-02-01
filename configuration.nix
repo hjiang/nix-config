@@ -114,6 +114,7 @@
     claude-code
     git
     tmux
+    foot
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
