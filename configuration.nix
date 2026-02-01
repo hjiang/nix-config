@@ -139,10 +139,14 @@
     claude-code
     git
     tmux
+    stow
+    fzf
+    gnumake
 
     # Terminal and desktop applications
     foot                    # Terminal (footclient)
     emacs                   # Editor
+    walker                  # launcher
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default  # Browser
 
     # Wayland screenshot tools
