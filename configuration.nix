@@ -90,6 +90,7 @@
     description = "Hong Jiang";
     group = "hjiang";
     extraGroups = [ "networkmanager" "wheel" "users" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
@@ -98,6 +99,9 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  # Enable zsh
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -109,6 +113,7 @@
     neovim
     claude-code
     git
+    tmux
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
