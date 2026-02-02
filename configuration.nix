@@ -160,6 +160,7 @@
     hyprpolkitagent        # Polkit authentication agent
     keychain
     neovim
+    nodejs                 # Node.js runtime (includes npm)
     networkmanagerapplet   # Network manager applet
     nwg-look               # GTK theme switcher
     pavucontrol            # Audio volume control
