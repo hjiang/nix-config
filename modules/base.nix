@@ -67,10 +67,12 @@
     keychain
     neovim
     nodejs
+    opencode
     ripgrep
     starship
     stow
     tmux
     wget
+    gh
   ];
 }
