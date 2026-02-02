@@ -141,13 +141,13 @@
     brightnessctl          # Brightness control
     claude-code
     cliphist               # Clipboard history manager
-    emacs                   # Editor
-    foot                    # Terminal (footclient)
+    emacs-pgtk             # Editor
+    foot                   # Terminal (footclient)
     fzf
     gammastep              # Blue light filter
     git
     gnumake
-    grim                    # Screenshot utility
+    grim                   # Screenshot utility
     hypridle               # Idle daemon
     hyprpaper              # Wallpaper daemon
     hyprpolkitagent        # Polkit authentication agent
