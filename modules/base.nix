@@ -71,7 +71,6 @@
     ripgrep
     starship
     stow
-    tmux
     wget
     gh
   ];
