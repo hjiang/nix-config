@@ -39,6 +39,7 @@
 
   # Common programs
   programs.zsh.enable = true;
+  programs.direnv.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
