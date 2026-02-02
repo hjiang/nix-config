@@ -108,6 +108,13 @@
     xwayland.enable = true; # Xwayland can be disabled.
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   # Enable fcitx5 input method
   i18n.inputMethod = {
     enable = true;
