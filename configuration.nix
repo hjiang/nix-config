@@ -92,7 +92,6 @@
     extraGroups = [ "networkmanager" "wheel" "users" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
-      kdePackages.kate
     #  thunderbird
     ];
   };
@@ -128,6 +127,11 @@
   # Configure fonts
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-color-emoji
+    fira-code-symbols
   ];
 
   # List packages installed in system profile. To search, run:
@@ -144,6 +148,9 @@
     gnumake
     socat
     keychain
+    slack
+    starship
+    ripgrep
 
     # Terminal and desktop applications
     foot                    # Terminal (footclient)
