@@ -137,55 +137,42 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Core utilities
-    wget
-    neovim
+    blueman                # Bluetooth manager
+    brightnessctl          # Brightness control
     claude-code
-    git
-    tmux
-    stow
-    fzf
-    gnumake
-    socat
-    keychain
-    slack
-    starship
-    ripgrep
-
-    # Terminal and desktop applications
-    foot                    # Terminal (footclient)
+    cliphist               # Clipboard history manager
     emacs                   # Editor
-    walker                  # launcher
-    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default  # Browser
-
-    # Wayland screenshot tools
+    foot                    # Terminal (footclient)
+    fzf
+    gammastep              # Blue light filter
+    git
+    gnumake
     grim                    # Screenshot utility
-    slurp                   # Region selector
-    satty                   # Screenshot annotation
-
-    # Hyprland ecosystem
-    hyprpolkitagent        # Polkit authentication agent
     hypridle               # Idle daemon
     hyprpaper              # Wallpaper daemon
-    waybar                 # Status bar
-
-    # Notifications and system tray
-    swaynotificationcenter # Notification daemon (swaync)
+    hyprpolkitagent        # Polkit authentication agent
+    keychain
+    neovim
     networkmanagerapplet   # Network manager applet
-    blueman                # Bluetooth manager
-
-    # Clipboard management
-    wl-clipboard           # Wayland clipboard utilities
-    cliphist               # Clipboard history manager
-
-    # System utilities
-    udiskie                # USB automount with tray
-    gammastep              # Blue light filter
-    brightnessctl          # Brightness control
-    playerctl              # Media player control
-    pavucontrol            # Audio volume control
     nwg-look               # GTK theme switcher
+    pavucontrol            # Audio volume control
+    playerctl              # Media player control
+    ripgrep
+    satty                   # Screenshot annotation
+    slack
+    slurp                   # Region selector
+    socat
+    starship
+    stow
+    swaynotificationcenter # Notification daemon (swaync)
+    tmux
+    udiskie                # USB automount with tray
+    walker                  # launcher
+    waybar                 # Status bar
+    wget
+    wl-clipboard           # Wayland clipboard utilities
     xorg.xhost             # X host access control
+    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default  # Browser
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
