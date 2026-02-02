@@ -10,7 +10,10 @@
   outputs = { self, nixpkgs, zen-browser }: {
     nixosConfigurations.hestia = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      modules = [ ./configuration.nix ];
+      modules = [
+            ./modules/base.nix
+            ./hosts/hestia/configuration.nix
+          ];
       specialArgs = { inherit zen-browser; };
     };
   };
