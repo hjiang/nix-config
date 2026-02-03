@@ -69,6 +69,7 @@
     neovim
     nodejs
     opencode
+    rclone
     ripgrep
     starship
     stow
