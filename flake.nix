@@ -11,23 +11,26 @@
     };
   };
 
-  outputs = { self, nixpkgs, zen-browser, home-manager }: {
-    nixosConfigurations.hestia = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, zen-browser, home-manager }:
+  let
+    # Helper to create a NixOS system configuration
+    mkHost = hostName: nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-            ./modules/base.nix
-            ./hosts/hestia/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.hjiang = ./home.nix;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass
-              # arguments to home.nix
-            }
+        ./modules/base.nix
+        ./hosts/${hostName}/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit hostName; };
+          home-manager.users.hjiang = ./home.nix;
+        }
       ];
       specialArgs = { inherit zen-browser; };
     };
+  in
+  {
+    nixosConfigurations.hestia = mkHost "hestia";
   };
 }

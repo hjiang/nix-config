@@ -1,6 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, hostName, ... }:
 
+let
+  hostConfigPath = ./home/hosts/${hostName}.nix;
+  hostConfigExists = builtins.pathExists hostConfigPath;
+in
 {
+  imports = [
+    ./home/hyprland.nix
+  ] ++ lib.optionals hostConfigExists [ hostConfigPath ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "hjiang";
@@ -15,9 +23,6 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "25.11";
-
-  # Conflict with UWSM
-  wayland.windowManager.hyprland.systemd.enable = false;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
