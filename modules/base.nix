@@ -62,6 +62,7 @@
     claude-code
     emacs-pgtk
     fzf
+    gh
     git
     gnumake
     keychain
@@ -71,7 +72,7 @@
     ripgrep
     starship
     stow
+    wechat
     wget
-    gh
   ];
 }
