@@ -16,18 +16,19 @@
   # changes in each release.
   home.stateVersion = "25.11";
 
+  # Conflict with UWSM
+  wayland.windowManager.hyprland.systemd.enable = false;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   programs.tmux = {
     enable = true;
+    prefix = "C-j";
+    escapeTime = 1;
+    mouse = true;
+    baseIndex = 1;
     extraConfig = ''
-      set-option -g prefix 'C-j'
-
-      set -s escape-time 1
-      set -g mouse on
-      set -g base-index 1
-
       bind r \
            source-file ~/.config/tmux/tmux.conf \; \
            display-message "Configuration reloaded"
