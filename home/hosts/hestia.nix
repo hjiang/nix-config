@@ -1,6 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [
+    ../emq.nix
+  ];
+
   # Hestia-specific Hyprland configuration
   wayland.windowManager.hyprland.settings = {
     # Override monitor scaling for hestia (HiDPI display)
