@@ -59,6 +59,7 @@
 
   # Common packages shared across all hosts
   environment.systemPackages = with pkgs; [
+    ansible
     claude-code
     emacs-pgtk
     fzf
