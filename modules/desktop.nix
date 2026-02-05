@@ -2,7 +2,12 @@
 
 {
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "catppuccin-mocha-blue";
+    package = pkgs.kdePackages.sddm;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -50,6 +55,15 @@
 
   # Desktop packages
   environment.systemPackages = with pkgs; [
+    # SDDM theme
+    (catppuccin-sddm.override {
+      flavor = "mocha";
+      accent = "blue";
+      font = "Noto Sans";
+      fontSize = "12";
+      loginBackground = true;
+    })
+
     blueman
     brightnessctl
     cliphist
