@@ -66,6 +66,7 @@
     gh
     git
     gnumake
+    inetutils
     keychain
     neovim
     nodejs
