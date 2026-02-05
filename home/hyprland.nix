@@ -77,7 +77,6 @@ in
         "fcitx5"
         "/usr/libexec/hyprpolkitagent"
         "hypridle"
-        "waybar"
         "xhost si:localuser:root"
         "swaync"
         "nm-applet"
@@ -545,6 +544,7 @@ in
   # Waybar configuration
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
     settings = {
       mainBar = {
         layer = "top";
