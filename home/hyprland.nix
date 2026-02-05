@@ -1,6 +1,12 @@
 { config, pkgs, lib, ... }:
 
 let
+  # Wallpaper
+  wallpaper = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/dharmx/walls/6bf4d733ebf2b484a37c17d742eb47e5139e6a14/radium/a_house_with_a_chair_and_a_bicycle.jpg";
+    sha256 = "sha256-bVGLWGZtNT+2esG50QJLenNYrggNdlfyz+fJlVgnUdo=";
+  };
+
   # Program shortcuts
   terminal = "footclient";
   fileManager = "dolphin";
@@ -71,7 +77,6 @@ in
         "fcitx5"
         "/usr/libexec/hyprpolkitagent"
         "hypridle"
-        "hyprpaper"
         "waybar"
         "xhost si:localuser:root"
         "swaync"
@@ -527,8 +532,13 @@ in
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = [ "~/.local/share/backgrounds/a_house_with_a_chair_and_a_bicycle.jpg" ];
-      wallpaper = [ ", ~/.local/share/backgrounds/a_house_with_a_chair_and_a_bicycle.jpg" ];
+      preload = [ "${wallpaper}" ];
+      wallpaper = [
+        {
+          monitor = "";
+          path = "${wallpaper}";
+        }
+      ];
     };
   };
 
