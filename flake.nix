@@ -32,5 +32,6 @@
   in
   {
     nixosConfigurations.hestia = mkHost "hestia";
+    nixosConfigurations.eos = mkHost "eos";
   };
 }
