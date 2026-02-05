@@ -52,9 +52,6 @@
   # Enable geoclue2 for location services (used by gammastep)
   services.geoclue2.enable = true;
 
-  services.tailscale.enable = true;
-  services.tailscale.extraSetFlags = ["--accept-dns=true"];
-
   # Desktop packages
   environment.systemPackages = with pkgs; [
     blueman

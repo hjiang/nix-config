@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/desktop.nix
   ];
 
   # Bootloader.
@@ -19,6 +20,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  services.tailscale.enable = true;
+  services.tailscale.extraSetFlags = ["--accept-dns=true"];
 
   # Host-specific packages
   environment.systemPackages = with pkgs; [
