@@ -3,7 +3,7 @@
 let
   # Program shortcuts
   terminal = "footclient";
-  fileManager = "thunar";
+  fileManager = "dolphin";
   browser = "zen";
   editor = "emacs";
   screenshot = ''grim -g "$(slurp)" - | satty -f -'';
