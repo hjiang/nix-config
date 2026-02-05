@@ -61,7 +61,6 @@
   environment.systemPackages = with pkgs; [
     ansible
     claude-code
-    emacs-pgtk
     fzf
     gh
     git
@@ -73,9 +72,9 @@
     opencode
     rclone
     ripgrep
+    socat
     starship
     stow
-    wechat
     wget
   ];
 }

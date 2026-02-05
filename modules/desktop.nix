@@ -57,6 +57,7 @@
     blueman
     brightnessctl
     cliphist
+    emacs-pgtk
     foot
     gammastep
     grim
@@ -70,11 +71,11 @@
     satty
     slack
     slurp
-    socat
     swaynotificationcenter
     udiskie
     walker
     waybar
+    wechat
     wl-clipboard
     xorg.xhost
   ];
