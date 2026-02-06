@@ -76,6 +76,8 @@ sudo nixos-rebuild test --flake .#hestia
 sudo nixos-rebuild switch --flake .#hestia --update-input nixpkgs
 ```
 
+**important**: nix will ignore files not tracked by git.
+
 ### Flake Management
 
 ```bash

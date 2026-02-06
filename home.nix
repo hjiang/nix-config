@@ -7,6 +7,7 @@ in
 {
   imports = [
     ./home/hyprland.nix
+    ./home/walker.nix
   ] ++ lib.optionals hostConfigExists [ hostConfigPath ];
 
   # Home Manager needs a bit of information about you and the
