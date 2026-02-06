@@ -51,7 +51,7 @@ in
       exec-once = [
         ''gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"''
         "fcitx5"
-        "/usr/libexec/hyprpolkitagent"
+        "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
         "hypridle"
         "xhost si:localuser:root"
         "swaync"

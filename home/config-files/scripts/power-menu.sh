@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Power menu options
+# Power menu for NixOS with systemd
+# Adapted from Gentoo config to use systemctl instead of loginctl
+
 options="Lock Screen
 Logout
 Suspend
@@ -12,18 +14,23 @@ selected=$(printf "%s" "$options" | walker --dmenu)
 # Execute action based on selection
 case "$selected" in
     "Lock Screen")
+        # Lock session - loginctl is correct for this
         loginctl lock-session
         ;;
     "Logout")
+        # Exit Hyprland compositor
         hyprctl dispatch exit
         ;;
     "Suspend")
-        loginctl suspend
+        # Suspend system - use systemctl on NixOS
+        systemctl suspend
         ;;
     "Shutdown")
-        loginctl poweroff
+        # Poweroff system - use systemctl on NixOS
+        systemctl poweroff
         ;;
     "Reboot")
-        loginctl reboot
+        # Reboot system - use systemctl on NixOS
+        systemctl reboot
         ;;
 esac
