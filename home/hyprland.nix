@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, hostName, ... }:
 
 let
+  # Config helper with per-host override support
+  configLib = import ./lib/config.nix { inherit lib hostName; };
+
   # Wallpaper
   wallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/dharmx/walls/6bf4d733ebf2b484a37c17d742eb47e5139e6a14/radium/a_house_with_a_chair_and_a_bicycle.jpg";
@@ -15,8 +18,9 @@ let
   screenshot = ''grim -g "$(slurp)" - | satty -f -'';
 
   # Power menu script for waybar
+  # Supports per-host overrides in hosts/config-overrides/<hostname>/scripts/
   powerMenuScript = pkgs.writeShellScript "waybar-power-menu"
-    (builtins.readFile ./config-files/scripts/power-menu.sh);
+    (configLib.readConfig "scripts/power-menu.sh");
 in
 {
   wayland.windowManager.hyprland = {
@@ -296,7 +300,8 @@ in
 
     # Extra config for features that don't translate well to Nix
     # (submaps, window rules with new 0.53+ syntax)
-    extraConfig = builtins.readFile ./config-files/hyprland/extra.conf;
+    # Supports per-host overrides in hosts/config-overrides/<hostname>/hyprland/
+    extraConfig = configLib.readConfig "hyprland/extra.conf";
   };
 
   # Hypridle configuration
@@ -587,7 +592,9 @@ in
       };
     };
 
-    style = builtins.readFile ./config-files/waybar/style.css;
+    # Waybar CSS styling
+    # Supports per-host overrides in hosts/config-overrides/<hostname>/waybar/
+    style = configLib.readConfig "waybar/style.css";
   };
 
   # Foot terminal configuration
