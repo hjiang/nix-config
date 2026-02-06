@@ -29,5 +29,24 @@
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
+  # Disable USB wake sources to prevent spurious wakes from s2idle suspend
+  # This machine only supports s2idle, which is sensitive to USB events
+  # After this, only the power button will wake the system
+  systemd.services.disable-usb-wake = {
+    description = "Disable USB wake sources for reliable suspend";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      for dev in XHC0 XHC1 XHC3 XHC4; do
+        if grep -q "$dev.*enabled" /proc/acpi/wakeup; then
+          echo $dev > /proc/acpi/wakeup
+        fi
+      done
+    '';
+  };
+
   system.stateVersion = "25.11";
 }

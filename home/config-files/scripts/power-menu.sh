@@ -23,6 +23,7 @@ case "$selected" in
         ;;
     "Suspend")
         # Suspend system - use systemctl on NixOS
+        # USB wake sources are disabled at boot, so simple suspend works
         systemctl suspend
         ;;
     "Shutdown")
