@@ -66,7 +66,9 @@
 
     blueman
     brightnessctl
+    clang
     cliphist
+    cmake
     emacs-pgtk
     foot
     gammastep
