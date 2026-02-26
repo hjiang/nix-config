@@ -56,6 +56,10 @@
   # Needed for Bamboo Studio, etc.
   services.flatpak.enable = true;
 
+  # GNOME Keyring for secret storage (used by Dolphin for SMB credentials)
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
   # Desktop packages
   environment.systemPackages = with pkgs; [
     # SDDM theme
@@ -81,6 +85,7 @@
     hyprpolkitagent
     kdePackages.dolphin
     kdePackages.dolphin-plugins
+    kdePackages.kio-extras  # SMB/network protocol support
     networkmanagerapplet
     nwg-look
     pavucontrol
