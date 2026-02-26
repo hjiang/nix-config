@@ -87,6 +87,7 @@
     kdePackages.dolphin-plugins
     kdePackages.kio             # KIO framework with kiod6/kpasswdserver
     kdePackages.kio-extras      # SMB/network protocol support
+    kdePackages.okular
     kdePackages.kwallet
     kdePackages.kwalletmanager  # GUI to manage stored credentials
     kdePackages.kwallet-pam     # Auto-unlock wallet on login
