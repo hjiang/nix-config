@@ -56,9 +56,9 @@
   # Needed for Bamboo Studio, etc.
   services.flatpak.enable = true;
 
-  # GNOME Keyring for secret storage (used by Dolphin for SMB credentials)
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
+  # KDE Wallet for secret storage (used by Dolphin for SMB credentials)
+  # Use 'login' service because SDDM's PAM config uses 'substack login'
+  security.pam.services.login.kwallet.enable = true;
 
   # Desktop packages
   environment.systemPackages = with pkgs; [
@@ -85,7 +85,11 @@
     hyprpolkitagent
     kdePackages.dolphin
     kdePackages.dolphin-plugins
-    kdePackages.kio-extras  # SMB/network protocol support
+    kdePackages.kio             # KIO framework with kiod6/kpasswdserver
+    kdePackages.kio-extras      # SMB/network protocol support
+    kdePackages.kwallet
+    kdePackages.kwalletmanager  # GUI to manage stored credentials
+    kdePackages.kwallet-pam     # Auto-unlock wallet on login
     networkmanagerapplet
     nwg-look
     pavucontrol

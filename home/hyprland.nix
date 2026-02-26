@@ -52,6 +52,7 @@ in
         ''gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"''
         "fcitx5"
         "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
+        "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init"  # Auto-unlock KDE Wallet
         "hypridle"
         "xhost si:localuser:root"
         "swaync"
