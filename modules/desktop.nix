@@ -53,6 +53,9 @@
   # Enable geoclue2 for location services (used by gammastep)
   services.geoclue2.enable = true;
 
+  # Needed for Bamboo Studio, etc.
+  services.flatpak.enable = true;
+
   # Desktop packages
   environment.systemPackages = with pkgs; [
     # SDDM theme
