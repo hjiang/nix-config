@@ -76,6 +76,7 @@
     clang
     cliphist
     cmake
+    codecrafters-cli
     emacs-pgtk
     foot
     gammastep
