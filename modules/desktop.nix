@@ -40,6 +40,10 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  # USB storage and automounting
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
+
   # Enable fcitx5 input method
   i18n.inputMethod = {
     enable = true;
