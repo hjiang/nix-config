@@ -114,6 +114,6 @@
     waybar
     wechat
     wl-clipboard
-    xorg.xhost
+    xhost
   ];
 }
