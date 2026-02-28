@@ -64,6 +64,9 @@
   # Use 'login' service because SDDM's PAM config uses 'substack login'
   security.pam.services.login.kwallet.enable = true;
 
+  # Elephant: data provider backend required by walker launcher (since v2.14.x)
+  services.elephant.enable = true;
+
   # Desktop packages
   environment.systemPackages = with pkgs; [
     # SDDM theme
