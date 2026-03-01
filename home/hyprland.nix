@@ -21,6 +21,28 @@ let
   # Supports per-host overrides in hosts/config-overrides/<hostname>/scripts/
   powerMenuScript = pkgs.writeShellScript "waybar-power-menu"
     (configLib.readConfig "scripts/power-menu.sh");
+
+  # Browser extension popups open with initialTitle "Zen Browser" and only
+  # change to "Extension: ..." after mapping, so windowrule title-matching
+  # misses them. This script listens on the Hyprland IPC event socket and
+  # floats any zen window whose title changes to start with "Extension: ".
+  floatExtensionsScript = pkgs.writeShellScript "hypr-float-extensions" ''
+    handle() {
+      if [[ "$1" == "windowtitlev2>>"* ]]; then
+        rest="''${1#windowtitlev2>>}"
+        addr="''${rest%%,*}"
+        title="''${rest#*,}"
+        if [[ "$title" == "Extension: "* ]]; then
+          class=$(hyprctl clients -j | ${pkgs.jq}/bin/jq -r ".[] | select(.address == \"0x''${addr}\") | .class")
+          if [[ "$class" == "zen" ]]; then
+            hyprctl dispatch setfloating "address:0x''${addr}"
+          fi
+        fi
+      fi
+    }
+    socat - "UNIX-CONNECT:''${XDG_RUNTIME_DIR}/hypr/''${HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock" | \
+      while IFS= read -r line; do handle "$line"; done
+  '';
 in
 {
   wayland.windowManager.hyprland = {
@@ -62,6 +84,8 @@ in
         "wl-paste --type image --watch cliphist store"
         "udiskie --tray"
         "gammastep -l geoclue"
+        "walker --gapplication-service"
+        "${floatExtensionsScript}"
       ];
 
       # General settings
