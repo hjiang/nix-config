@@ -15,11 +15,16 @@
 
   networking.hostName = "eos";
 
-  networking.proxy.default = "http://192.168.1.10:7890/";
+  networking.proxy.default = "http://127.0.0.1:7890";
   networking.proxy.noProxy = "127.0.0.1,localhost,192.168.1.0/24";
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  services.mihomo = {
+    enable = true;
+    configFile = "${config.users.users.hjiang.home}/code/surgio-store/dist/clash-headless.yaml";
+  };
 
   services.tailscale.enable = true;
   services.tailscale.extraSetFlags = ["--accept-dns=true"];
